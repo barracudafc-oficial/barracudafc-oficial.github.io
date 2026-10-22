@@ -77,6 +77,20 @@ body{background:#e9e6e1}
 .meta{padding:10px 28px;background:white}
 @media(max-width:900px){.topinner{flex-wrap:wrap;padding:7px 15px}.nav{width:100%;justify-content:center}.brand img{width:58px;height:62px}.brand strong{font-size:23px}.hero-benefits{right:9px;width:115px}.hero-benefits b{font-size:9px}.hero-inner{padding-right:125px}.hero h1{font-size:clamp(24px,4.3vw,36px)}}
 @media(max-width:650px){.topinner{min-height:0;flex-wrap:wrap;justify-content:center}.nav{flex-wrap:wrap;gap:7px}.nav a:not(.selected){display:inline-block!important;font-size:8px}.nav select{min-width:85px}.hero,.hero-inner{min-height:365px}.hero-inner{padding:23px 14px 108px}.hero h1{font-size:clamp(24px,6vw,33px);max-width:100%}.hero p{font-size:12px;max-width:100%}.hero-benefits{top:auto;bottom:7px;left:12px;right:12px;width:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px}.hero-benefits span{font-size:21px;min-width:23px}.hero-benefits b{font-size:9px;max-width:none}}
+</style><style id="footer-overlap-fix">
+/* Corrección exclusiva del pie de página: evita superposición y desbordes */
+.foot .footmain{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1.35fr) minmax(0,.85fr) minmax(0,1.45fr);gap:20px;align-items:start;padding:24px 26px}
+.foot .footmain>*{min-width:0;max-width:100%;box-sizing:border-box}
+.foot .footer-brand{min-width:0;align-items:center}
+.foot .footer-brand>div{min-width:0}
+.foot .footer-brand strong,.foot .footer-brand small{white-space:normal;overflow-wrap:anywhere;line-height:1.2}
+.foot .footer-unit{min-width:0;min-height:0;overflow-wrap:anywhere;word-break:normal;line-height:1.55}
+.foot .footer-unit span:last-child{min-width:0}
+.foot .footer-unit a,.foot .footer-social .website{white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+.foot .footer-social{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 26px;padding:8px 0 0;align-items:center}
+.foot .motto{line-height:1.5;white-space:normal}
+@media(max-width:850px){.foot .footmain{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.foot .footer-social{grid-column:1/-1}}
+@media(max-width:520px){.foot .footmain{grid-template-columns:minmax(0,1fr);gap:16px;padding:22px 20px}.foot .footer-social{grid-column:1;justify-content:flex-start}.foot .footer-unit{border-left:0;padding-left:0}.foot .footer-brand strong{font-size:19px}.foot .motto{letter-spacing:.12em;font-size:9px}}
 </style></head><body>
 
 <div id="web-layout"><header class="top"><div class="topinner"><a class="brand" href="https://barracudafc.com/" aria-label="Barracuda F.C."><img src="assets/escudo.jpg" alt="Escudo oficial Barracuda F.C."><span><strong>BARRACUDA F.C.</strong><small>BARRACUDA FÚTBOL CLUB</small></span></a><nav class="nav" aria-label="Navegación institucional"><a href="https://barracudafc.com/">INICIO</a><a href="https://barracudafc.com/#club">EL CLUB</a><a href="https://barracudafc.com/#categorias">CATEGORÍAS</a><a href="https://barracudafc.com/#plantillas">PLANTILLAS</a><a href="https://barracudafc.com/noticias.html">NOTICIAS</a><a href="https://barracudafc.com/noticias.html" class="selected">REVISTA DIGITAL</a><a href="https://barracudafc.com/#galeria">GALERÍA</a><a href="https://barracudafc.com/#contacto">CONTACTO</a><span class="search-icon" aria-hidden="true">⌕</span><select id="lang" aria-label="Seleccionar idioma"><option value="es">ES</option><option value="en">EN</option><option value="pt">PT</option><option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option></select></nav></div></header>
