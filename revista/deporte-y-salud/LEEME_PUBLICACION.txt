@@ -1,0 +1,8 @@
+BARRACUDA F.C. — ARTÍCULO MULTILINGÜE
+Archivo principal: index.html
+Ruta sugerida en el sitio: /revista/deporte-y-salud/index.html
+Subir index.html y toda la carpeta assets juntos, conservando las rutas relativas.
+Español: muestra la maqueta ORIGINAL APROBADA como imagen de alta resolución (fidelidad visual exacta).
+Otros cinco idiomas: vista HTML adaptable con texto traducido; NO es aún una réplica visual exacta del diseño original.
+Los enlaces del encabezado y redes sociales requieren validación contra el sitio real antes de publicar.
+NO está publicado. Este paquete es para validación técnica y visual.
