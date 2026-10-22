@@ -118,6 +118,12 @@ body{background:#e9e6e1}
 #web-layout .bottom-ornament,#web-layout .motto{display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;background:none!important}
 #web-layout>.foot{border-bottom:0!important}
 #web-layout>.foot .footer-bottom{border-bottom:0!important}
+</style><style id="center-footer-motto-20261022">
+/* Centrar exclusivamente el lema institucional, sin mover el enlace web */
+#web-layout>.foot .footer-bottom{display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;gap:12px!important}
+#web-layout>.foot .footer-bottom>span{grid-column:2!important;text-align:center!important;justify-self:center!important}
+#web-layout>.foot .footer-bottom>a{grid-column:3!important;justify-self:end!important;text-align:right!important}
+@media(max-width:520px){#web-layout>.foot .footer-bottom{grid-template-columns:1fr!important;gap:8px!important}#web-layout>.foot .footer-bottom>span,#web-layout>.foot .footer-bottom>a{grid-column:1!important;justify-self:center!important;text-align:center!important}}
 </style></head><body>
 
 <div id="web-layout"><header class="top"><div class="topinner"><a class="brand" href="https://barracudafc.com/" aria-label="Barracuda F.C."><img src="assets/escudo.jpg" alt="Escudo oficial Barracuda F.C."><span><strong>BARRACUDA F.C.</strong><small>BARRACUDA FÚTBOL CLUB</small></span></a><nav class="nav" aria-label="Navegación institucional"><a href="https://barracudafc.com/">INICIO</a><a href="https://barracudafc.com/#club">EL CLUB</a><a href="https://barracudafc.com/#categorias">CATEGORÍAS</a><a href="https://barracudafc.com/#plantillas">PLANTILLAS</a><a href="https://barracudafc.com/noticias.html">NOTICIAS</a><a href="https://barracudafc.com/noticias.html" class="selected">REVISTA DIGITAL</a><a href="https://barracudafc.com/#galeria">GALERÍA</a><a href="https://barracudafc.com/#contacto">CONTACTO</a><span class="search-icon" aria-hidden="true">⌕</span><select id="lang" aria-label="Seleccionar idioma"><option value="es">ES</option><option value="en">EN</option><option value="pt">PT</option><option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option></select></nav></div></header>
