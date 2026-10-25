@@ -14,3 +14,20 @@
 #noticias .news-feature-mini .news-feature-body h3{display:block;margin:0;color:#321b52;font-size:20px;line-height:1.3;font-weight:750}
 #noticias .news-feature-mini .news-feature-button{display:inline-block;background:#e5b94d;color:#281340;border-radius:7px;padding:9px 16px;text-decoration:none;font-size:14px;line-height:1.3;font-weight:800;white-space:normal}
 @media(max-width:480px){#noticias .news-feature-mini{gap:12px;padding:10px}#noticias .news-feature-mini .news-feature-image{flex-basis:100px;width:100px;height:95px}#noticias .news-feature-mini .news-feature-image img{width:100px;height:95px;max-height:95px}#noticias .news-feature-mini .news-feature-body h3{font-size:16px}#noticias .news-feature-mini .news-feature-button{font-size:12px;padding:8px 11px}}
+
+/* Proyectos 2027: color institucional y acentos individuales */
+#proyectos-2027{background:linear-gradient(180deg,#fbf8fd 0%,#fff 100%)!important}
+#proyectos-2027 .section-head .eyebrow{color:#92682b}
+#proyectos-2027 .section-head h2{color:#29133e}
+#proyectos-2027 .city-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+#proyectos-2027 .city-grid article{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:12px;border:1px solid #e5d8ec;border-top:5px solid #d8b66b;border-radius:14px;padding:30px 25px;box-shadow:0 12px 30px #28134014;transition:transform .2s ease,box-shadow .2s ease}
+#proyectos-2027 .city-grid article:hover{transform:translateY(-4px);box-shadow:0 16px 35px #28134024}
+#proyectos-2027 .city-grid article:nth-child(1){background:linear-gradient(145deg,#3e205c,#241037);color:#fff;border-color:#754f8e;border-top-color:#e5bb69}
+#proyectos-2027 .city-grid article:nth-child(2){background:linear-gradient(145deg,#fff6df,#f8e7bc);color:#34243e;border-color:#ecd8a5;border-top-color:#ae7b29}
+#proyectos-2027 .city-grid article:nth-child(3){background:linear-gradient(145deg,#eaf2fa,#dce9f7);color:#20344c;border-color:#c4d6e8;border-top-color:#426f9e}
+#proyectos-2027 .city-grid article .symbol{font-size:36px}
+#proyectos-2027 .city-grid article h3{font-size:22px;line-height:1.25;margin:0;color:inherit}
+#proyectos-2027 .city-grid article p{font-size:14px;line-height:1.7;margin:0;color:inherit;opacity:.9}
+#proyectos-2027 .city-grid article strong{margin-top:auto;padding-top:12px;font-size:13px;line-height:1.5;color:inherit!important}
+#proyectos-2027 .gallery-disclaimer{margin-top:22px}
+@media(max-width:850px){#proyectos-2027 .city-grid{grid-template-columns:1fr}}
