@@ -1,0 +1,38 @@
+name: Add return link to Barracuda Interactivo
+on:
+  push:
+    paths:
+      - '.github/workflows/interactivo-home-link.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  add-home-link:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Add accessible fixed home link without changing existing content
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("interactivo/index.html")
+          s=p.read_text(encoding="utf-8")
+          marker="bfc-return-to-site-2026"
+          if marker not in s:
+              snippet='''<a id="bfc-return-to-site-2026" href="https://barracudafc.com/" aria-label="Volver a la página principal de Barracuda F.C." style="position:fixed;bottom:18px;left:18px;z-index:2147483647;background:#74243a;color:#fff;text-decoration:none;padding:12px 16px;border:2px solid #d9b46d;border-radius:999px;font:700 14px Arial,sans-serif;box-shadow:0 3px 12px #0006">⌂ Volver a la página principal</a>'''
+              if "</body>" not in s.lower(): raise SystemExit("Missing closing body: no changes")
+              import re
+              s=re.sub(r'</body>',lambda m:snippet+m.group(0),s,count=1,flags=re.I)
+              p.write_text(s,encoding="utf-8")
+          PY
+      - name: Commit navigation-only correction
+        run: |
+          if ! git diff --quiet -- interactivo/index.html; then
+            git config user.name "Barracuda navigation bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add interactivo/index.html
+            git commit -m "Add return-to-home link in Barracuda Interactivo"
+            git push
+          fi
