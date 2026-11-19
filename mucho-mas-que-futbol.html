@@ -10,7 +10,14 @@
 .uniforme-historia img{display:block;width:100%;max-height:590px;object-fit:contain;background:#eee;border-radius:10px}
 .uniforme-historia figcaption{font-size:.85rem;color:#4e4860;margin-top:8px;line-height:1.5}
 @media(max-width:600px){.uniforme-historia{padding:12px}}
-</style></head><body><section class="hero"><div style="display:flex;justify-content:flex-end;align-items:center;gap:10px"><label for="article-lang" style="font-weight:700;color:#e5b94d">Idioma / Language</label><select id="article-lang" aria-label="Idioma del artículo" style="padding:9px 12px;border-radius:8px;font-size:1rem"><option value="es">🇪🇨 Español</option><option value="en">🇺🇸 English</option><option value="pt">🇧🇷 Português</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="it">🇮🇹 Italiano</option></select></div><div class="brand"><img alt="Escudo oficial de Barracuda F.C." src="imagenes/foto-01.png"/><span>BARRACUDA F.C. · SALINAS, ECUADOR</span></div><div class="tag">Historia · Identidad · Visión</div><h1>Mucho más <em>que fútbol</em></h1><p class="subtitle">Una historia de esfuerzo, identidad y compromiso con las nuevas generaciones.</p></section>
+</style><style id="bfc-article-return-style">
+.bfc-article-return{box-sizing:border-box;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;padding:12px 16px;background:#fffaf2;border-block:1px solid #d8b67a;font:700 14px/1.4 Arial,sans-serif}
+.bfc-article-return a{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:100%;padding:7px 14px;border:1px solid #c69a49;border-radius:8px;background:white;color:#48152c;text-align:center;text-decoration:none}
+.bfc-article-return a:hover{text-decoration:underline}.bfc-article-return a:focus-visible{outline:2px solid #48152c;outline-offset:2px}
+@media print{.bfc-article-return{display:none!important}}
+</style>
+</head><body>
+<nav class="bfc-article-return" aria-label="Navegación del artículo"><a href="/articulos-formativos/index.html">Volver a la revista</a><a href="/">Volver al inicio</a></nav><section class="hero"><div style="display:flex;justify-content:flex-end;align-items:center;gap:10px"><label for="article-lang" style="font-weight:700;color:#e5b94d">Idioma / Language</label><select id="article-lang" aria-label="Idioma del artículo" style="padding:9px 12px;border-radius:8px;font-size:1rem"><option value="es">🇪🇨 Español</option><option value="en">🇺🇸 English</option><option value="pt">🇧🇷 Português</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="it">🇮🇹 Italiano</option></select></div><div class="brand"><img alt="Escudo oficial de Barracuda F.C." src="imagenes/foto-01.png"/><span>BARRACUDA F.C. · SALINAS, ECUADOR</span></div><div class="tag">Historia · Identidad · Visión</div><h1>Mucho más <em>que fútbol</em></h1><p class="subtitle">Una historia de esfuerzo, identidad y compromiso con las nuevas generaciones.</p></section>
 <img alt="Fotografía real de jugadores de Barracuda F.C." class="hero-photo" src="imagenes/foto-02.jpg"/><p class="caption">Barracuda F.C. · Fotografía del archivo del club.</p>
 <main class="article"><p class="lead">El fútbol nos reúne en una cancha, pero su verdadero alcance se descubre en las oportunidades que abre, los valores que transmite y las personas que ayuda a formar.</p>
 <h2>Un sueño que nació en Salinas</h2><p>El 29 de abril de 2017 nació en Salinas, provincia de Santa Elena, Barracuda F.C., con una convicción que sigue orientando nuestro camino: el deporte puede ser una herramienta de formación, integración y desarrollo humano.</p><p>Desde nuestros primeros pasos comprendimos que construir una institución deportiva significa mucho más que organizar entrenamientos o participar en competencias. Significa trabajar con responsabilidad hacia los deportistas, sus familias y la comunidad.</p>
@@ -26,4 +33,22 @@ const select=document.getElementById('article-lang');
 function applyArticleLang(lang){const d=articleTranslations[lang]||originals;document.documentElement.lang=lang;document.title=(d.title||'Mucho más que fútbol')+' | Barracuda F.C.';document.querySelector('.tag').textContent=d.tag;document.querySelector('.hero h1').textContent=d.title;document.querySelector('.subtitle').textContent=d.subtitle;document.querySelector('.lead').textContent=d.lead;document.querySelectorAll('.article h2').forEach((x,i)=>x.textContent=d.heads[i]);document.querySelectorAll('.uniforme-historia h3').forEach((x,i)=>x.textContent=d.uniform[i]);document.querySelectorAll('.article > p:not(.lead),.uniforme-historia > p').forEach((x,i)=>{if(!x.querySelector('strong'))x.textContent=d.paras[[...document.querySelectorAll('.article > p:not(.lead),.uniforme-historia > p')].filter(y=>!y.querySelector('strong')).indexOf(x)]});document.querySelectorAll('.quote').forEach((x,i)=>x.textContent=i?d.quote2:d.quote1);document.querySelector('.note').textContent=d.status;[document.querySelector('.caption'),...document.querySelectorAll('figcaption')].forEach((x,i)=>x.textContent=d.captions[i]);select.value=lang;try{localStorage.setItem('barracuda-lang',lang)}catch(e){}}
 let lang='es';try{lang=localStorage.getItem('barracuda-lang')||navigator.language.slice(0,2)}catch(e){}if(!['es','en','pt','fr','de','it'].includes(lang))lang='es';applyArticleLang(lang);select.addEventListener('change',e=>applyArticleLang(e.target.value));
 </script><!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8d6ffb562143498caef0584b5bc1e519"}'></script><!-- End Cloudflare Web Analytics -->
+<nav class="bfc-article-return" aria-label="Navegación del artículo"><a href="/articulos-formativos/index.html">Volver a la revista</a><a href="/">Volver al inicio</a></nav>
+<script id="bfc-article-return-language">
+(() => {
+  const labels = {"es":["Navegación del artículo","Volver a la revista","Volver al inicio"],"en":["Article navigation","Back to the magazine","Back to home"],"pt":["Navegação do artigo","Voltar à revista","Voltar ao início"],"fr":["Navigation de l’article","Retour à la revue","Retour à l’accueil"],"de":["Artikelnavigation","Zurück zum Magazin","Zurück zur Startseite"],"it":["Navigazione dell’articolo","Torna alla rivista","Torna alla pagina iniziale"]};
+  const root = document.documentElement;
+  const links = document.querySelectorAll('.bfc-article-return');
+  function update() {
+    const [label, magazine, home] = labels[root.lang.toLowerCase().split('-')[0]] || labels.es;
+    links.forEach(nav => {
+      nav.setAttribute('aria-label', label);
+      nav.children[0].textContent = magazine;
+      nav.children[1].textContent = home;
+    });
+  }
+  update();
+  new MutationObserver(update).observe(root, { attributes: true, attributeFilter: ['lang'] });
+})();
+</script>
 </body></html>
