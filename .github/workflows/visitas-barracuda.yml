@@ -1,0 +1,76 @@
+name: Actualizar visitas de Barracuda
+on:
+  push:
+    paths:
+      - '.github/workflows/visitas-barracuda.yml'
+  schedule:
+    - cron: '37 10 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: visitas-barracuda
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Consultar visitas de días completos
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from datetime import date, datetime, time, timedelta, timezone
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+
+          ecuador = timezone(timedelta(hours=-5))
+          today = datetime.now(ecuador).date()
+          path = Path('assets/visitas-barracuda.json')
+          state = json.loads(path.read_text()) if path.exists() else {
+              'visitas': 840, 'hasta': '2026-11-18'
+          }
+          start = date.fromisoformat(state['hasta']) + timedelta(days=1)
+          if start >= today:
+              raise SystemExit(0)
+          token = os.environ.get('CLOUDFLARE_API_TOKEN')
+          if not token:
+              raise SystemExit('Falta el secreto CLOUDFLARE_API_TOKEN.')
+          def utc(day):
+              return datetime.combine(day, time.min, ecuador).astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+
+          total = state['visitas']
+          while start < today:
+              end = min(start + timedelta(days=7), today)
+              query = f'''{{viewer{{accounts(filter:{{accountTag:"e95a17ff5f495eae583716791457101b"}}){{
+                rumPageloadEventsAdaptiveGroups(limit:10,filter:{{datetime_geq:"{utc(start)}",
+                datetime_lt:"{utc(end)}",requestHost:"barracudafc.com"}}){{sum{{visits}}}}
+              }}}}}}'''
+              request = Request('https://api.cloudflare.com/client/v4/graphql',
+                                data=json.dumps({'query': query}).encode(),
+                                headers={'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'})
+              with urlopen(request, timeout=30) as result:
+                  data = json.load(result)
+              if data.get('errors'):
+                  raise SystemExit('Cloudflare no pudo devolver las visitas: ' +
+                                   '; '.join(item['message'] for item in data['errors']))
+              rows = data['data']['viewer']['accounts'][0]['rumPageloadEventsAdaptiveGroups']
+              total += sum(row['sum']['visits'] for row in rows)
+              start = end
+
+          state = {'visitas': total, 'hasta': (today - timedelta(days=1)).isoformat()}
+          path.write_text(json.dumps(state) + '\n', encoding='utf-8')
+          print(f"{total} visitas acumuladas hasta {state['hasta']}.")
+          PY
+      - name: Guardar el acumulado
+        run: |
+          git add -- assets/visitas-barracuda.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Actualizar contador de visitas"
+            git pull --rebase
+            git push
+          fi
